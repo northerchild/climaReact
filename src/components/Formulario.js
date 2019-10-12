@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function Formulario(){
+function Formulario({datosConsulta}){
 
     //state del Componente
     //busqueda = state, guardarBusqueda = this.setState({})
@@ -16,8 +16,15 @@ function Formulario(){
         })
         console.log(busqueda);
     }
+
+    const consultarClima = e =>{
+        e.preventDefault();
+        //Pasar hacia el componente principal la busqueda
+        datosConsulta(busqueda)
+    }
+
     return(
-        <form>
+        <form onSubmit={consultarClima}>
             <div className="input-field col s12">
                 <input 
                     type="text"
