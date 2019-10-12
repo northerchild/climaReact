@@ -1,56 +1,62 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
 
-function Formulario({datosConsulta}){
+function Formulario({datosConsulta}) {
 
-    //state del Componente
-    //busqueda = state, guardarBusqueda = this.setState({})
+    // state del Componente
+    // busqueda = state, guardarBusqueda = this.setState({})
     const [busqueda, guardarBusqueda] = useState({
-        cuidad:'',
-        pais:''
+        ciudad : '',
+        pais : ''
     })
 
-    const handleChange = e =>{
+    const handleChange = e => {
+        // Cambiar el state
         guardarBusqueda({
-            ...busqueda,
+            ...busqueda, 
             [e.target.name] : e.target.value
-        })
-        console.log(busqueda);
+        });
+        console.log(busqueda)
     }
 
-    const consultarClima = e =>{
+    const consultarClima = e => {
         e.preventDefault();
-        //Pasar hacia el componente principal la busqueda
-        datosConsulta(busqueda)
+
+        // pasar hacia el componente principal la busqueda del usuario
+        datosConsulta(busqueda);
     }
+
 
     return(
-        <form onSubmit={consultarClima}>
-            <div className="input-field col s12">
+        <form
+            onSubmit={consultarClima}
+        >
+            <div className="input-field col s12 white-text">
                 <input 
                     type="text"
-                    name="cuidad"
-                    id="cuidad"
+                    name="ciudad"
+                    id="ciudad"
                     onChange={handleChange}
-                    />
-                    <label htmlFor="cuidad" className="white-text">Cuidad:</label>
+                />
+                <label htmlFor="ciudad">Ciudad: </label>
             </div>
+
             <div className="input-field col s12">
-                <select onChange={handleChange}>
-                <option value="">Selecciona un país</option>
-                <option value="US">Estados Unidos</option>
-                <option value="MX">México</option>
-                <option value="AR">Argentina</option>
-                <option value="CO">Colombia</option>
-                <option value="CR">Costa Rica</option>
-                <option value="ES">España</option>
-                <option value="PE">Perú</option>
-                </select> 
+                <select onChange={handleChange} name="pais">
+                    <option value="">Selecciona un país</option>
+                    <option value="US">Estados Unidos</option>
+                    <option value="MX">México</option>
+                    <option value="AR">Argentina</option>
+                    <option value="CO">Colombia</option>
+                    <option value="CR">Costa Rica</option>
+                    <option value="ES">España</option>
+                    <option value="PE">Perú</option>
+                </select>
             </div>
+
             <div className="input-field col s12">
-                <input type="submit" className="waves-effect waves-light btn-large btn-block yellow accent-4" value="Buscar Clima"/>
+                <input type="submit" className="waves-effect waves-light btn-large btn-block yellow accent-4" value="Buscar Clima" />
             </div>
         </form>
     )
 }
-
 export default Formulario;
