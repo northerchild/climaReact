@@ -37,7 +37,7 @@ function Formulario({datosConsulta}) {
                     id="ciudad"
                     onChange={handleChange}
                 />
-                <label htmlFor="ciudad">Ciudad: </label>
+                <label htmlFor="ciudad" className="white-text">Ciudad: </label>
             </div>
 
             <div className="input-field col s12">
